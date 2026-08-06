@@ -10,6 +10,7 @@ const ProfessionalBranch = sequelize.define('ProfessionalBranch', {
   professionalId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'professional_id',
     references: {
       model: 'professionals',
       key: 'id'
@@ -18,6 +19,7 @@ const ProfessionalBranch = sequelize.define('ProfessionalBranch', {
   branchId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'branch_id',
     references: {
       model: 'branches',
       key: 'id'
@@ -37,18 +39,20 @@ const ProfessionalBranch = sequelize.define('ProfessionalBranch', {
   },
   isActive: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true
+    defaultValue: true,
+    field: 'is_active'
   },
   isPrimary: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
+    field: 'is_primary'
   }
 }, {
   tableName: 'professional_branches',
   indexes: [
     {
       unique: true,
-      fields: ['professionalId', 'branchId']
+      fields: ['professional_id', 'branch_id']
     }
   ]
 });

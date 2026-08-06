@@ -10,6 +10,7 @@ const ProfessionalService = sequelize.define('ProfessionalService', {
   professionalId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'professional_id',
     references: {
       model: 'professionals',
       key: 'id'
@@ -18,6 +19,7 @@ const ProfessionalService = sequelize.define('ProfessionalService', {
   serviceId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'service_id',
     references: {
       model: 'services',
       key: 'id'
@@ -26,23 +28,26 @@ const ProfessionalService = sequelize.define('ProfessionalService', {
   customPrice: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: true,
+    field: 'custom_price',
     comment: 'Precio personalizado del profesional para este servicio (null = usar precio base)'
   },
   customDuration: {
     type: DataTypes.INTEGER,
     allowNull: true,
+    field: 'custom_duration',
     comment: 'Duración personalizada en minutos (null = usar duración base)'
   },
   isActive: {
     type: DataTypes.BOOLEAN,
-    defaultValue: true
+    defaultValue: true,
+    field: 'is_active'
   }
 }, {
   tableName: 'professional_services',
   indexes: [
     {
       unique: true,
-      fields: ['professionalId', 'serviceId']
+      fields: ['professional_id', 'service_id']
     }
   ]
 });

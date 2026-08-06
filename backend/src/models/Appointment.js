@@ -150,13 +150,13 @@ const Appointment = sequelize.define('Appointment', {
   tableName: 'appointments',
   indexes: [
     {
-      fields: ['professionalId', 'date', 'startTime']
+      fields: ['professional_id', 'date', 'start_time']
     },
     {
-      fields: ['clientId', 'date']
+      fields: ['client_id', 'date']
     },
     {
-      fields: ['branchId', 'date']
+      fields: ['branch_id', 'date']
     },
     {
       fields: ['status']

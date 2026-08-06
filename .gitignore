@@ -51,6 +51,8 @@ coverage/
 # Backend specific
 backend/uploads/
 backend/tmp/
+backend/database.sqlite
+backend/*.sqlite3
 
 # Frontend specific
 frontend/dist/

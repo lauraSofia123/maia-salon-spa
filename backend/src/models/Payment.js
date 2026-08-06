@@ -88,16 +88,16 @@ const Payment = sequelize.define('Payment', {
   tableName: 'payments',
   indexes: [
     {
-      fields: ['appointmentId']
+      fields: ['appointment_id']
     },
     {
-      fields: ['clientId']
+      fields: ['client_id']
     },
     {
       fields: ['status']
     },
     {
-      fields: ['mercadopagoPaymentId']
+      fields: ['mercadopago_payment_id']
     }
   ]
 });

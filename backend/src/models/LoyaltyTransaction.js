@@ -51,7 +51,7 @@ const LoyaltyTransaction = sequelize.define('LoyaltyTransaction', {
   tableName: 'loyalty_transactions',
   indexes: [
     {
-      fields: ['clientId', 'createdAt']
+      fields: ['client_id', 'created_at']
     }
   ]
 });

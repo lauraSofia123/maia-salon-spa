@@ -43,7 +43,7 @@ const PromotionUsage = sequelize.define('PromotionUsage', {
   tableName: 'promotion_usages',
   indexes: [
     {
-      fields: ['promotionId', 'clientId']
+      fields: ['promotion_id', 'client_id']
     }
   ]
 });

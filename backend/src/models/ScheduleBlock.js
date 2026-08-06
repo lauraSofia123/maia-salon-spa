@@ -69,7 +69,7 @@ const ScheduleBlock = sequelize.define('ScheduleBlock', {
   tableName: 'schedule_blocks',
   indexes: [
     {
-      fields: ['professionalId', 'startDate', 'endDate']
+      fields: ['professional_id', 'start_date', 'end_date']
     }
   ]
 });
