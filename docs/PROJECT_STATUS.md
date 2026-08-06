@@ -29,6 +29,14 @@
 - [x] Layout: Header (nav, user menu, mobile responsive), Footer, ProtectedRoute
 - [x] Rutas configuradas: públicas, auth, booking, client area, professional area, admin area
 
+### Documentación y Repo ✅
+- [x] Git repo inicializado con commit inicial (619a8c3)
+- [x] AGENTS.md (reglas permanentes)
+- [x] ARCHITECTURE.md (arquitectura técnica)
+- [x] API_DOCS.md (documentación endpoints)
+- [x] DEPLOYMENT.md (guía despliegue)
+- [x] PROJECT_STATUS.md (este archivo)
+
 ---
 
 ## Próximo Módulo a Desarrollar
