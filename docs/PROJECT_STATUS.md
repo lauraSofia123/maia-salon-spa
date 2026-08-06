@@ -36,6 +36,7 @@
 - [x] API_DOCS.md (documentación endpoints)
 - [x] DEPLOYMENT.md (guía despliegue)
 - [x] PROJECT_STATUS.md (este archivo)
+- [x] README.md (guía instalación/uso para humanos)
 
 ---
 
