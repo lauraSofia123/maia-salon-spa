@@ -20,14 +20,15 @@
 - [x] Integraciones: Cloudinary, Email (Nodemailer), WhatsApp (Twilio), Mercado Pago
 - [x] Sync DB + Seed con datos de prueba (3 sedes, 35 servicios, 3 profesionales, 4 clientes, citas, pagos, promos, galería)
 
-### Frontend 🟡 (Base iniciada ~30%)
+### Frontend 🟡 (Base iniciada ~35%)
 - [x] Configuración: Vite, React 18, Tailwind CSS, React Router, Axios
 - [x] Theme Tailwind: paleta primary/secondary/accent, tipografía Inter + Playfair Display, animaciones
 - [x] API client (Axios) con interceptors para auth y refresh token automático
 - [x] Context: AuthContext (login, register, logout, profile, password), CartContext (booking flow state)
 - [x] Componentes UI: Button, Input, Card, Modal, Badge, Avatar, LoadingSpinner, Select
-- [x] Layout: Header (nav, user menu, mobile responsive), Footer, ProtectedRoute
-- [x] Rutas configuradas: públicas, auth, booking, client area, professional area, admin area
+- [x] Layout: Header (nav, user, mobile responsive), Footer, ProtectedRoute
+- [x] **Página Home** funcional (Hero, servicios, profesionales, sedes, testimonios, CTA), rutas activas solo para Home (resto se agrega por módulo)
+- [x] Corregidos imports de Header (`./ui/X`) y verificado que la app compila y carga en dev
 
 ### Documentación y Repo ✅
 - [x] Git repo inicializado con commit inicial (619a8c3)

@@ -135,7 +135,7 @@
 }
 
 .react-datepicker__header {
-  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-t-2xl border-none padding-4;
+  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-t-2xl border-none;
 }
 
 .react-datepicker__current-month {

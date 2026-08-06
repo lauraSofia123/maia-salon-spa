@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Sun, Moon, User, LogOut, ShoppingBag, Heart, MapPin, Phone, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import Button from '../ui/Button';
-import Avatar from '../ui/Avatar';
-import Modal from '../ui/Modal';
+import Button from './ui/Button';
+import Avatar from './ui/Avatar';
+import Modal from './ui/Modal';
 
 const Header = () => {
   const { user, isAuthenticated, logout, isClient, isProfessional, isAdmin } = useAuth();
