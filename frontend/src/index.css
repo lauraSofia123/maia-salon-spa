@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-neutral-900 bg-ivory antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-medium;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-soft;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary-300 text-primary-800 hover:bg-secondary-200 focus:ring-secondary-300;
+  }
+  
+  .btn-outline {
+    @apply btn border border-primary-500 text-primary-600 hover:bg-primary-50 focus:ring-primary-500;
+  }
+  
+  .btn-ghost {
+    @apply btn text-neutral-600 hover:bg-neutral-100 focus:ring-neutral-500;
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+  
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-neutral-200 bg-white text-neutral-900 placeholder-neutral-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .input-error {
+    @apply border-red-300 focus:ring-red-500;
+  }
+  
+  .label {
+    @apply block text-sm font-medium text-neutral-700 mb-1.5;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-soft;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-2xl shadow-elegant;
+  }
+  
+  .container-custom {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-16 sm:py-24 lg:py-32;
+  }
+  
+  .section-title {
+    @apply text-3xl sm:text-4xl font-display font-bold text-neutral-900;
+  }
+  
+  .section-subtitle {
+    @apply text-lg sm:text-xl text-neutral-600 mt-2 max-w-2xl;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+  
+  .badge-secondary {
+    @apply badge bg-secondary-100 text-secondary-700;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-700;
+  }
+  
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-700;
+  }
+  
+  .badge-danger {
+    @apply badge bg-red-100 text-red-700;
+  }
+  
+  .badge-neutral {
+    @apply badge bg-neutral-100 text-neutral-700;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent;
+  }
+  
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* React DatePicker overrides */
+.react-datepicker {
+  @apply font-sans border-none shadow-elegant rounded-2xl p-2;
+}
+
+.react-datepicker__header {
+  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-t-2xl border-none;
+}
+
+.react-datepicker__current-month {
+  @apply font-display font-medium text-lg;
+}
+
+.react-datepicker__day-name {
+  @apply text-sm font-medium text-white/80;
+}
+
+.react-datepicker__day {
+  @apply text-neutral-700 rounded-xl;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl;
+}
+
+.react-datepicker__day--today {
+  @apply font-bold text-primary-600;
+}
+
+.react-datepicker__day--disabled,
+.react-datepicker__day--disabled:hover {
+  @apply text-neutral-300 cursor-not-allowed;
+}
+
+.react-datepicker__day:hover {
+  @apply bg-primary-50 text-primary-600;
+}
+
+.react-datepicker__month-container {
+  @apply p-2;
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet-active {
+  @apply bg-primary-500;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-primary-500;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  @apply text-2xl font-bold;
+}
+
+/* Ocultar scrollbar en selectores/carruseles horizontales */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
