@@ -17,7 +17,7 @@ const Badge = ({ children, variant = 'neutral', size = 'md', className = '', dot
   };
 
   return (
-    <span className={`inline-flex items-center font-medium rounded-full ${variantClasses[variant]} ${sizeClasses[md]} ${className}`}>
+    <span className={`inline-flex items-center font-medium rounded-full ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}>
       {dot && (
         <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${dotColor || 'bg-current'}`} />
       )}

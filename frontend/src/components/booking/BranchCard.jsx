@@ -22,8 +22,8 @@ const BranchCard = ({
   };
 
   const openingHours = branch.openingHours || {};
-  const today = new Date().toLocaleLowerCase().split(',')[0].substring(0, 3);
-  const todayKey = Object.keys(dayNames).find(k => dayNames[k].startsWith(today)) || 'monday';
+  const weekdayKey = new Date().toLocaleDateString('es-CO', { weekday: 'long' }).toLowerCase();
+  const todayKey = Object.keys(dayNames).find((k) => weekdayKey.startsWith(dayNames[k].toLowerCase())) || 'monday';
   const todayHours = openingHours[todayKey];
 
   return (

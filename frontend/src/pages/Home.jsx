@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles, Heart, Star, MapPin, Check, Shield, Truck, Headphones } from 'lucide-react';
 import { Section, Container, SectionHeader } from '../components/layout/Section';
-import ServiceCard from '../components/booking/ServiceCard';
 import ProfessionalCard from '../components/booking/ProfessionalCard';
 import BranchCard from '../components/booking/BranchCard';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { servicesAPI, professionalsAPI, branchesAPI } from '../services/api';
-import { formatPrice } from '../utils/formatters';
+import Hero from '../components/home/Hero';
+import FeaturedServices from '../components/home/FeaturedServices';
 
 const Home = () => {
   const [featuredServices, setFeaturedServices] = useState([]);
@@ -89,89 +89,10 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ec4899%22 fill-opacity=%220.03%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
-        
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center lg:text-left"
-            >
-              <Badge variant="primary" className="mb-6" size="lg" dot>
-                ¡Nueva sede en Chapinero!
-              </Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-neutral-900 leading-tight mb-6">
-                Tu belleza, <span className="gradient-text">nuestra pasión</span>
-              </h1>
-              <p className="text-lg sm:text-xl text-neutral-600 mb-8 max-w-xl mx-auto lg:mx-0">
-                Salón de belleza integral: uñas, cabello y pestañas. Profesionales certificados, productos premium y una experiencia única en cada visita.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Link to="/reservar">
-                  <Button size="lg" rightIcon={<ArrowRight className="w-5 h-5" />} className="w-full sm:w-auto">
-                    Reservar Cita
-                  </Button>
-                </Link>
-                <Link to="/servicios">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                    Ver Servicios
-                  </Button>
-                </Link>
-              </div>
-              <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm">
-                <div className="flex items-center gap-2 text-neutral-600">
-                  <Check className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                  <span>3 sedes en Bogotá</span>
-                </div>
-                <div className="flex items-center gap-2 text-neutral-600">
-                  <Check className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                  <span>35+ servicios</span>
-                </div>
-                <div className="flex items-center gap-2 text-neutral-600">
-                  <Check className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                  <span>Reserva online 24/7</span>
-                </div>
-              </div>
-            </motion.div>
+      <Hero services={featuredServices} professionals={featuredProfessionals} />
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative">
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-3xl blur-2xl" />
-                <div className="relative bg-white rounded-3xl shadow-2xl p-2 overflow-hidden">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center">
-                        <Sparkles className="w-12 h-12 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-display font-bold text-neutral-900 mb-2">Reserva en 3 pasos</h3>
-                      <p className="text-neutral-600">Elige sede, servicio y hora. Paga online o en salón.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </Container>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
-        >
-          <svg className="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </section>
+      {/* Bloque 3 — Servicios Estrella */}
+      <FeaturedServices />
 
       {/* Features */}
       <Section background="white" id="features">
@@ -263,31 +184,6 @@ const Home = () => {
           </div>
         </Container>
       </Section>
-
-      {/* Featured Services */}
-      {featuredServices.length > 0 && (
-        <Section background="white" id="featured-services">
-          <Container>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-12">
-              <SectionHeader align="left" title="Servicios Destacados" subtitle="Los más solicitados por nuestras clientas" />
-              <Link to="/servicios" className="mt-4 sm:mt-0 btn-outline">
-                Ver todos
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredServices.slice(0, 6).map((service, index) => (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  variant="featured"
-                  onClick={() => {}}
-                />
-              ))}
-            </div>
-          </Container>
-        </Section>
-      )}
 
       {/* Featured Professionals */}
       {featuredProfessionals.length > 0 && (

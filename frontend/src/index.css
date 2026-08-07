@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply font-sans text-neutral-800 antialiased;
+    @apply font-sans text-neutral-900 bg-ivory antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -18,19 +18,19 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
   .btn-primary {
-    @apply btn bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 focus:ring-primary-500 shadow-elegant;
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500 shadow-soft;
   }
   
   .btn-secondary {
-    @apply btn bg-secondary-500 text-white hover:bg-secondary-600 focus:ring-secondary-500;
+    @apply btn bg-secondary-300 text-primary-800 hover:bg-secondary-200 focus:ring-secondary-300;
   }
   
   .btn-outline {
-    @apply btn border-2 border-primary-500 text-primary-600 hover:bg-primary-50 focus:ring-primary-500;
+    @apply btn border border-primary-500 text-primary-600 hover:bg-primary-50 focus:ring-primary-500;
   }
   
   .btn-ghost {
@@ -62,7 +62,7 @@
   }
   
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   
   .section {
@@ -185,4 +185,13 @@
 .swiper-button-next:after,
 .swiper-button-prev:after {
   @apply text-2xl font-bold;
+}
+
+/* Ocultar scrollbar en selectores/carruseles horizontales */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

@@ -147,8 +147,8 @@ const Footer = () => {
             <Link to="/privacidad" className="text-neutral-500 hover:text-white text-sm transition-colors">Privacidad</Link>
             <Link to="/cookies" className="text-neutral-500 hover:text-white text-sm transition-colors">Cookies</Link>
           </div>
-          <button className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary-500 text-white flex items-center justify-center shadow-elegant hover:bg-primary-600 transition-colors z-40" aria-label="Volver arriba">
-            <ArrowUp className="w-6 h-6" />
+          <button className="hidden sm:flex fixed bottom-6 right-6 w-11 h-11 rounded-full bg-primary-500 text-white items-center justify-center shadow-elegant hover:bg-primary-600 transition-colors z-40" aria-label="Volver arriba">
+            <ArrowUp className="w-5 h-5" />
           </button>
         </div>
       </div>
