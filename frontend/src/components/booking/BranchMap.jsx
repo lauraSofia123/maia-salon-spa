@@ -45,20 +45,31 @@ export default function BranchMap({
   const [mapZoom, setMapZoom] = useState(12);
 
   useEffect(() => {
-    if (selectedBranch?.latitud && selectedBranch?.longitud) {
-      setMapCenter([selectedBranch.latitud, selectedBranch.longitud]);
+    const lat = selectedBranch?.latitude || selectedBranch?.latitud;
+    const lng = selectedBranch?.longitude || selectedBranch?.longitud;
+    
+    if (lat && lng) {
+      setMapCenter([lat, lng]);
       setMapZoom(15);
     } else if (branches.length > 0) {
       const first = branches[0];
-      setMapCenter([first.latitud, first.longitud]);
-      setMapZoom(12);
+      const firstLat = first.latitude || first.latitud;
+      const firstLng = first.longitude || first.longitud;
+      if (firstLat && firstLng) {
+        setMapCenter([firstLat, firstLng]);
+        setMapZoom(12);
+      }
     }
   }, [selectedBranch, branches]);
 
   const handleMarkerClick = (branch) => {
     onSelectBranch(branch);
-    setMapCenter([branch.latitud, branch.longitud]);
-    setMapZoom(16);
+    const lat = branch.latitude || branch.latitud;
+    const lng = branch.longitude || branch.longitud;
+    if (lat && lng) {
+      setMapCenter([lat, lng]);
+      setMapZoom(16);
+    }
   };
 
   const getDirectionsUrl = (lat, lng) => {
@@ -90,11 +101,13 @@ export default function BranchMap({
           maxZoom={19}
         />
         <MapView center={mapCenter} zoom={mapZoom} />
-        {branches.map((branch) => (
-          branch.latitud && branch.longitud && (
+        {branches.map((branch) => {
+          const lat = branch.latitude || branch.latitud;
+          const lng = branch.longitude || branch.longitud;
+          return lat && lng && (
             <Marker
               key={branch.id}
-              position={[branch.latitud, branch.longitud]}
+              position={[lat, lng]}
               icon={selectedBranch?.id === branch.id ? iconActive : iconDefault}
               onClick={() => handleMarkerClick(branch)}
             >
@@ -136,7 +149,7 @@ export default function BranchMap({
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        window.open(getDirectionsUrl(branch.latitud, branch.longitud), '_blank', 'noopener');
+                        window.open(getDirectionsUrl(lat, lng), '_blank', 'noopener');
                       }}
                       className="flex-1 btn-primary py-2 px-3 text-sm flex items-center justify-center gap-1"
                     >
@@ -156,8 +169,8 @@ export default function BranchMap({
                 </div>
               </Popup>
             </Marker>
-          )
-        ))}
+          );
+        })}
       </MapContainer>
 
       {selectedBranch && (
@@ -186,7 +199,7 @@ export default function BranchMap({
             </div>
             <div className="flex gap-2">
               <a
-                href={getDirectionsUrl(selectedBranch.latitud, selectedBranch.longitud)}
+                href={getDirectionsUrl(selectedBranch.latitude || selectedBranch.latitud, selectedBranch.longitude || selectedBranch.longitud)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 btn-primary py-2 px-3 text-sm flex items-center justify-center gap-1"

@@ -1,17 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import Map, { Marker, Popup, NavigationControl } from 'react-map-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import { MapPin, Star, Sparkles, ChevronRight, Check, ArrowRight, AlertCircle } from 'lucide-react';
 import { Container } from '../components/layout/Section';
 import Button from '../components/ui/Button';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import ProfessionalAvatar from '../components/ui/ProfessionalAvatar';
+import BranchMap from '../components/booking/BranchMap';
 import { professionalsAPI, branchesAPI } from '../services/api';
-
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
-const isMapboxTokenValid = MAPBOX_TOKEN && !MAPBOX_TOKEN.includes('dummy_token');
 
 const ServiceIcons = () => (
   <div className="flex gap-2 mt-2">
@@ -62,15 +58,6 @@ const Professionals = () => {
   const [selectedPro, setSelectedPro] = useState(null);
   const [selectedBranch, setSelectedBranch] = useState(null);
 
-  // Map state
-  const [viewState, setViewState] = useState({
-    longitude: -74.0450,
-    latitude: 4.6700,
-    zoom: 11
-  });
-  const [popupInfo, setPopupInfo] = useState(null);
-  const mapRef = useRef(null);
-
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -85,17 +72,6 @@ const Professionals = () => {
       
       setProfessionals(prosData);
       setBranches(branchesData);
-
-      // Centrar el mapa en la primera sede si existe
-      if (branchesData.length > 0 && branchesData[0].latitude && branchesData[0].longitude) {
-        setViewState(prev => ({
-          ...prev,
-          latitude: Number(branchesData[0].latitude),
-          longitude: Number(branchesData[0].longitude),
-          zoom: 11
-        }));
-      }
-
     } catch (err) {
       setError(true);
     } finally {
@@ -109,15 +85,6 @@ const Professionals = () => {
 
   const handleSelectBranch = (branch) => {
     setSelectedBranch(branch);
-    if (branch.latitude && branch.longitude) {
-      setViewState({
-        longitude: Number(branch.longitude),
-        latitude: Number(branch.latitude),
-        zoom: 13,
-        transitionDuration: 1000
-      });
-      setPopupInfo(branch);
-    }
   };
 
   const checkCompatibility = () => {
@@ -314,149 +281,27 @@ const Professionals = () => {
                 })}
               </div>
 
-              {/* Interactive Map Section (Appears below branches on mobile, and spans both columns on desktop via CSS grid in theory, but user wanted it below both columns on desktop. Let's move it outside the grid for desktop) */}
-              
+              {/* Interactive Map Section */}
               <div className="mt-4 lg:hidden block">
-                {/* Mobile map placement */}
-                {isMapboxTokenValid ? (
-                  <div className="bg-neutral-200 rounded-3xl overflow-hidden h-[350px] relative border border-neutral-100 shadow-sm">
-                    <Map
-                      ref={mapRef}
-                      {...viewState}
-                      onMove={evt => setViewState(evt.viewState)}
-                      mapStyle="mapbox://styles/mapbox/light-v11"
-                      mapboxAccessToken={MAPBOX_TOKEN}
-                      attributionControl={false}
-                    >
-                      <NavigationControl position="top-right" />
-                      {branches.map(branch => branch.latitude && branch.longitude && (
-                        <Marker 
-                          key={branch.id}
-                          longitude={Number(branch.longitude)} 
-                          latitude={Number(branch.latitude)} 
-                          anchor="bottom"
-                          onClick={e => {
-                            e.originalEvent.stopPropagation();
-                            handleSelectBranch(branch);
-                          }}
-                        >
-                          <div className="relative flex items-center justify-center cursor-pointer group pb-12">
-                            <div className="absolute bottom-2">
-                               <MapPin className={`w-8 h-8 transition-colors ${selectedBranch?.id === branch.id ? 'text-primary-700 fill-primary-100 scale-110' : 'text-primary-900 fill-white group-hover:text-primary-600'}`} />
-                            </div>
-                          </div>
-                        </Marker>
-                      ))}
-                      {popupInfo && (
-                        <Popup
-                          anchor="bottom"
-                          longitude={Number(popupInfo.longitude)}
-                          latitude={Number(popupInfo.latitude)}
-                          onClose={() => setPopupInfo(null)}
-                          closeOnClick={false}
-                          className="rounded-2xl overflow-hidden shadow-lg border-0 pb-4 z-10"
-                          maxWidth="320px"
-                        >
-                          <div className="p-4">
-                            <div className="flex items-center gap-2 mb-2">
-                              <MapPin className="w-5 h-5 text-primary-700" />
-                              <h4 className="font-display font-semibold text-lg text-primary-900">{popupInfo.name}</h4>
-                            </div>
-                            <p className="text-sm text-neutral-600 mb-3">{popupInfo.address}</p>
-                            <Button 
-                              onClick={() => window.open(`https://maps.google.com/?q=${popupInfo.latitude},${popupInfo.longitude}`, '_blank')}
-                              className="w-full h-9 text-xs bg-primary-700 text-white rounded-lg hover:bg-primary-800"
-                            >
-                              Cómo llegar
-                            </Button>
-                          </div>
-                        </Popup>
-                      )}
-                    </Map>
-                  </div>
-                ) : (
-                  <div className="bg-white rounded-3xl h-[350px] border border-neutral-200 flex flex-col items-center justify-center text-center p-6">
-                    <MapPin className="w-10 h-10 text-neutral-300 mb-3" />
-                    <p className="text-neutral-500 font-medium">No pudimos cargar el mapa en este momento.</p>
-                    <p className="text-neutral-400 text-sm mt-1">Verifica tu configuración de Mapbox.</p>
-                  </div>
-                )}
+                <BranchMap 
+                  branches={branches} 
+                  selectedBranch={selectedBranch} 
+                  onSelectBranch={handleSelectBranch} 
+                  height="350px" 
+                />
               </div>
             </div>
 
           </div>
 
           {/* Desktop map placement (Full width below columns) */}
-          <div className="hidden lg:block mt-10">
-            {isMapboxTokenValid ? (
-              <div className="bg-neutral-200 rounded-3xl overflow-hidden h-[400px] relative border border-neutral-100 shadow-sm">
-                <Map
-                  ref={mapRef}
-                  {...viewState}
-                  onMove={evt => setViewState(evt.viewState)}
-                  mapStyle="mapbox://styles/mapbox/light-v11"
-                  mapboxAccessToken={MAPBOX_TOKEN}
-                  attributionControl={false}
-                >
-                  <NavigationControl position="top-right" />
-                  
-                  {branches.map(branch => branch.latitude && branch.longitude && (
-                    <Marker 
-                      key={branch.id}
-                      longitude={Number(branch.longitude)} 
-                      latitude={Number(branch.latitude)} 
-                      anchor="bottom"
-                      onClick={e => {
-                        e.originalEvent.stopPropagation();
-                        handleSelectBranch(branch);
-                      }}
-                    >
-                      <div className="relative flex items-center justify-center cursor-pointer group pb-12">
-                        <div className="absolute bottom-2">
-                           <MapPin className={`w-8 h-8 transition-colors ${selectedBranch?.id === branch.id ? 'text-primary-700 fill-primary-100 scale-110' : 'text-primary-900 fill-white group-hover:text-primary-600'}`} />
-                        </div>
-                      </div>
-                    </Marker>
-                  ))}
-
-                  {popupInfo && (
-                    <Popup
-                      anchor="bottom"
-                      longitude={Number(popupInfo.longitude)}
-                      latitude={Number(popupInfo.latitude)}
-                      onClose={() => setPopupInfo(null)}
-                      closeOnClick={false}
-                      className="rounded-2xl overflow-hidden shadow-lg border-0 pb-4 z-10"
-                      maxWidth="320px"
-                    >
-                      <div className="p-5">
-                        <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="w-5 h-5 text-primary-700" />
-                          <h4 className="font-display font-semibold text-lg text-primary-900">{popupInfo.name}</h4>
-                        </div>
-                        {popupInfo.recommended && (
-                          <p className="text-[11px] text-neutral-500 mb-2 font-medium">Nuestra sede recomendada</p>
-                        )}
-                        <p className="text-sm text-neutral-600 mb-4 leading-relaxed">{popupInfo.address}</p>
-                        <Button 
-                          onClick={() => window.open(`https://maps.google.com/?q=${popupInfo.latitude},${popupInfo.longitude}`, '_blank')}
-                          className="w-full h-10 text-sm bg-primary-700 text-white rounded-lg hover:bg-primary-800"
-                        >
-                          Cómo llegar
-                        </Button>
-                      </div>
-                    </Popup>
-                  )}
-                </Map>
-              </div>
-            ) : (
-              <div className="bg-white rounded-3xl h-[400px] border border-neutral-200 flex flex-col items-center justify-center text-center p-6">
-                <MapPin className="w-12 h-12 text-neutral-300 mb-4" />
-                <h4 className="text-lg font-bold text-neutral-700 mb-1">Mapa no disponible</h4>
-                <p className="text-neutral-500">No pudimos cargar el mapa en este momento.</p>
-                <p className="text-neutral-400 text-sm mt-1">Verifica tu configuración de VITE_MAPBOX_TOKEN.</p>
-              </div>
-            )}
+          <div className="hidden lg:block mt-10 relative z-0">
+            <BranchMap 
+              branches={branches} 
+              selectedBranch={selectedBranch} 
+              onSelectBranch={handleSelectBranch} 
+              height="450px" 
+            />
           </div>
 
         </div>
