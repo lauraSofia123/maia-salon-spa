@@ -6,6 +6,7 @@ import Home from './pages/Home';
 
 // NOTA: Las demás páginas se irán agregando en sus respectivas sesiones.
 // Módulo 1 - Sesión 1: Home
+import Services from './pages/Services';
 import Professionals from './pages/Professionals';
 import ProfessionalProfile from './pages/ProfessionalProfile';
 import BranchProfile from './pages/BranchProfile';
@@ -30,6 +31,7 @@ function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/servicios" element={<Services />} />
           <Route path="/profesionales" element={<Professionals />} />
           <Route path="/sedes" element={<Professionals />} />
           <Route path="/profesionales/:id" element={<ProfessionalProfile />} />
