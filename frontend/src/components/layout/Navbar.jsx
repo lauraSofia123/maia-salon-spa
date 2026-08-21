@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Calendar, Menu } from 'lucide-react';
+import { IconCalendar, IconMenu } from '@tabler/icons-react';
 import Logo from './Logo';
 import { motion } from 'framer-motion';
 
@@ -60,7 +60,7 @@ const Navbar = ({ onOpenMenu, isScrolled }) => {
               to="/agendar"
               className="hidden lg:inline-flex items-center gap-2 h-[44px] px-6 bg-primary-500 text-white text-sm font-medium rounded-full hover:bg-primary-600 transition-colors shadow-soft"
             >
-              <Calendar className="w-4 h-4" aria-hidden="true" />
+              <IconCalendar className="w-4 h-4" aria-hidden="true" />
               Reservar cita
             </Link>
 
@@ -72,7 +72,7 @@ const Navbar = ({ onOpenMenu, isScrolled }) => {
               aria-label="Abrir menú"
               aria-haspopup="dialog"
             >
-              <Menu className="w-6 h-6" />
+              <IconMenu className="w-6 h-6" />
             </button>
           </div>
         </div>

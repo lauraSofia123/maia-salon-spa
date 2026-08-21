@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail, Clock, ArrowUp } from 'lucide-react';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandX, IconBrandYoutube, IconMapPin, IconPhone, IconMail, IconClock, IconArrowUp } from '@tabler/icons-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -27,19 +27,19 @@ const Footer = () => {
       { label: 'Privacidad', path: '/privacidad' }
     ],
     contacto: [
-      { icon: MapPin, label: 'Calle 72 # 10-25, Centro Comercial Andino', path: '/sedes' },
-      { icon: Phone, label: '+57 1 234 5678', href: 'tel:+5712345678' },
-      { icon: Mail, label: 'info@salonbelleza.com', href: 'mailto:info@salonbelleza.com' },
-      { icon: Clock, label: 'Lun-Vie: 9:00 - 20:00', path: '/sedes' },
-      { icon: Clock, label: 'Sáb: 9:00 - 19:00', path: '/sedes' }
+      { icon: IconMapPin, label: 'Calle 72 # 10-25, Centro Comercial Andino', path: '/sedes' },
+      { icon: IconPhone, label: '+57 1 234 5678', href: 'tel:+5712345678' },
+      { icon: IconMail, label: 'info@salonbelleza.com', href: 'mailto:info@salonbelleza.com' },
+      { icon: IconClock, label: 'Lun-Vie: 9:00 - 20:00', path: '/sedes' },
+      { icon: IconClock, label: 'Sáb: 9:00 - 19:00', path: '/sedes' }
     ]
   };
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://facebook.com/salonbelleza', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/salonbelleza', label: 'Instagram' },
-    { icon: Twitter, href: 'https://twitter.com/salonbelleza', label: 'Twitter' },
-    { icon: Youtube, href: 'https://youtube.com/salonbelleza', label: 'YouTube' }
+    { icon: IconBrandFacebook, href: 'https://facebook.com/salonbelleza', label: 'Facebook' },
+    { icon: IconBrandInstagram, href: 'https://instagram.com/salonbelleza', label: 'Instagram' },
+    { icon: IconBrandX, href: 'https://twitter.com/salonbelleza', label: 'Twitter' },
+    { icon: IconBrandYoutube, href: 'https://youtube.com/salonbelleza', label: 'YouTube' }
   ];
 
   return (
@@ -148,7 +148,7 @@ const Footer = () => {
             <Link to="/cookies" className="text-neutral-500 hover:text-white text-sm transition-colors">Cookies</Link>
           </div>
           <button className="hidden sm:flex fixed bottom-6 right-6 w-11 h-11 rounded-full bg-primary-500 text-white items-center justify-center shadow-elegant hover:bg-primary-600 transition-colors z-40" aria-label="Volver arriba">
-            <ArrowUp className="w-5 h-5" />
+            <IconArrowUp className="w-5 h-5" />
           </button>
         </div>
       </div>

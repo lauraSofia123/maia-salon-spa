@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, ArrowRight, Star, Lock, ShieldCheck, Sparkles } from 'lucide-react';
+import { IconCalendar, IconArrowRight, IconStar, IconLock, IconShieldCheck, IconSparkles } from '@tabler/icons-react';
 import Button from '../ui/Button';
 import Select from '../ui/Select';
 import Input from '../ui/Input';
@@ -75,13 +75,13 @@ const BookingForm = ({ services = [], professionals = [] }) => {
           <Input label="Hora" type="time" placeholder="Selecciona hora" value={values.time} onChange={set('time')} autoComplete="off" />
         </div>
 
-        <Button type="submit" size="lg" fullWidth rightIcon={<ArrowRight className="w-5 h-5" />} className="h-12">
+        <Button type="submit" size="lg" fullWidth rightIcon={<IconArrowRight className="w-5 h-5" />} className="h-12">
           Reservar ahora
         </Button>
       </form>
 
       <p className="mt-4 text-xs text-neutral-500 flex items-center justify-center gap-1.5">
-        <Lock className="w-3.5 h-3.5" aria-hidden="true" />
+        <IconLock className="w-3.5 h-3.5" aria-hidden="true" />
         Tus datos están protegidos y son confidenciales.
       </p>
     </motion.div>
@@ -133,7 +133,7 @@ const Hero = ({ services = [], professionals = [] }) => {
             className="order-1"
           >
             <p className="flex items-center gap-2 text-sm font-medium text-primary-600 mb-5">
-              <Star className="w-4 h-4 fill-secondary-300 text-secondary-300" aria-hidden="true" />
+              <IconStar className="w-4 h-4 fill-secondary-300 text-secondary-300" aria-hidden="true" />
               <span>Belleza que refleja tu esencia</span>
             </p>
 
@@ -155,7 +155,7 @@ const Hero = ({ services = [], professionals = [] }) => {
               <Link to="/agendar" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  leftIcon={<Calendar className="w-5 h-5" />}
+                  leftIcon={<IconCalendar className="w-5 h-5" />}
                   className="h-12 px-7 rounded-[13px] w-full"
                 >
                   Reservar cita
@@ -166,7 +166,7 @@ const Hero = ({ services = [], professionals = [] }) => {
                 className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-[13px] text-primary-600 border border-primary-200 hover:bg-primary-50/60 transition-colors font-medium w-full sm:w-auto"
               >
                 Ver servicios
-                <ArrowRight className="w-5 h-5" aria-hidden="true" />
+                <IconArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
             </div>
 
@@ -175,7 +175,7 @@ const Hero = ({ services = [], professionals = [] }) => {
               <div className="flex items-center gap-2">
                 <div className="flex text-accent-500" aria-label="Valoración 4.9 de 5">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-4 h-4 fill-accent-400 text-accent-400" aria-hidden="true" />
+                    <IconStar key={i} className="w-4 h-4 fill-accent-400 text-accent-400" aria-hidden="true" />
                   ))}
                 </div>
                 <p className="text-sm text-neutral-500">
@@ -184,12 +184,12 @@ const Hero = ({ services = [], professionals = [] }) => {
               </div>
               <div className="hidden sm:block w-px h-8 bg-primary-100/70" aria-hidden="true" />
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-primary-500" aria-hidden="true" />
+                <IconShieldCheck className="w-4 h-4 text-primary-500" aria-hidden="true" />
                 <p className="text-sm text-neutral-500">Reserva segura y garantizada</p>
               </div>
               <div className="hidden sm:block w-px h-8 bg-primary-100/70" aria-hidden="true" />
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-secondary-500" aria-hidden="true" />
+                <IconSparkles className="w-4 h-4 text-secondary-500" aria-hidden="true" />
                 <p className="text-sm text-neutral-500">+1.200 clientas satisfechas</p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Clock, MapPin, Star, ArrowRight, Heart, Sparkles } from 'lucide-react';
+import { IconClock, IconMapPin, IconStar, IconArrowRight, IconHeart, IconSparkles } from '@tabler/icons-react';
 import { formatPrice } from '../../utils/formatters';
 import Badge from '../ui/Badge';
 
@@ -13,10 +13,10 @@ const ServiceCard = ({
   onClick
 }) => {
   const categoryIcons = {
-    nails: Sparkles,
-    hair: Heart,
-    eyelashes: Star,
-    other: Sparkles
+    nails: IconSparkles,
+    hair: IconHeart,
+    eyelashes: IconStar,
+    other: IconSparkles
   };
 
   const CategoryIcon = categoryIcons[service.category] || Sparkles;
@@ -72,12 +72,12 @@ const ServiceCard = ({
 
       <div className="flex items-center gap-4 text-sm text-neutral-500 mb-3">
         <span className="flex items-center gap-1">
-          <Clock className="w-4 h-4" />
+          <IconClock className="w-4 h-4" />
           {service.duration} min
         </span>
         {showProfessionals && professionals.length > 0 && (
           <span className="flex items-center gap-1">
-            <MapPin className="w-4 h-4" />
+            <IconMapPin className="w-4 h-4" />
             {professionals.length} pro
           </span>
         )}
@@ -92,11 +92,11 @@ const ServiceCard = ({
       <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
         <span className="text-sm font-medium text-primary-600 flex items-center gap-1 group-hover:gap-2 transition-all">
           Ver detalles
-          <ArrowRight className="w-4 h-4" />
+          <IconArrowRight className="w-4 h-4" />
         </span>
         {service.isPopular && (
           <Badge variant="warning" size="sm">
-            <Star className="w-3 h-3" />
+            <IconStar className="w-3 h-3" />
             Top
           </Badge>
         )}

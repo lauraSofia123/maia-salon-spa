@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Calendar, X } from 'lucide-react';
+import { IconCalendar, IconX } from '@tabler/icons-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import SocialIcon from './SocialIcons';
 import { WhatsAppIcon } from './SocialIcons';
@@ -80,7 +80,7 @@ const MobileMenu = ({ open, onClose, navLinks }) => {
                 className="inline-flex items-center justify-center w-11 h-11 rounded-xl text-neutral-500 hover:bg-primary-50 hover:text-primary-700 transition-colors"
                 aria-label="Cerrar menú"
               >
-                <X className="w-6 h-6" />
+                <IconX className="w-6 h-6" />
               </button>
             </div>
 
@@ -98,7 +98,7 @@ const MobileMenu = ({ open, onClose, navLinks }) => {
                 onClick={onClose}
                 className="flex items-center justify-center gap-2 w-full h-12 rounded-full bg-primary-500 text-white text-sm font-medium hover:bg-primary-600 transition-colors shadow-soft"
               >
-                <Calendar className="w-4 h-4" aria-hidden="true" />
+                <IconCalendar className="w-4 h-4" aria-hidden="true" />
                 Reservar cita
               </Link>
               <div className="flex items-center justify-center space-x-5">

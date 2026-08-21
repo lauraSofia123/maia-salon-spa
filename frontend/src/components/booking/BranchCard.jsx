@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Phone, Star, ArrowRight, Users, Sparkles } from 'lucide-react';
+import { IconMapPin, IconClock, IconPhone, IconStar, IconArrowRight, IconUsers, IconSparkles } from '@tabler/icons-react';
 import Badge from '../ui/Badge';
 
 const BranchCard = ({
@@ -56,13 +56,13 @@ const BranchCard = ({
               {branch.name}
             </h3>
             <p className="text-neutral-600 text-sm mt-1 flex items-center gap-1">
-              <MapPin className="w-4 h-4 flex-shrink-0" />
+              <IconMapPin className="w-4 h-4 flex-shrink-0" />
               <span className="line-clamp-1">{branch.address}</span>
             </p>
           </div>
           {branch.isMain && (
             <Badge variant="warning" size="sm">
-              <Sparkles className="w-3 h-3" />
+              <IconSparkles className="w-3 h-3" />
               Principal
             </Badge>
           )}
@@ -76,18 +76,18 @@ const BranchCard = ({
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-500">
           <span className="flex items-center gap-1">
-            <Phone className="w-4 h-4" />
+            <IconPhone className="w-4 h-4" />
             {branch.phone}
           </span>
           {todayHours && !todayHours.isClosed && (
             <span className="flex items-center gap-1 bg-green-50 text-green-700 px-2 py-1 rounded-full">
-              <Clock className="w-3 h-3" />
+              <IconClock className="w-3 h-3" />
               Abierto {todayHours.open}-{todayHours.close}
             </span>
           )}
           {todayHours && todayHours.isClosed && (
             <span className="flex items-center gap-1 bg-red-50 text-red-700 px-2 py-1 rounded-full">
-              <Clock className="w-3 h-3" />
+              <IconClock className="w-3 h-3" />
               Cerrado hoy
             </span>
           )}
@@ -117,13 +117,13 @@ const BranchCard = ({
       <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
         <div className="flex items-center gap-2 text-sm text-neutral-500">
           <span className="flex items-center gap-1">
-            <Users className="w-4 h-4" />
+            <IconUsers className="w-4 h-4" />
             {branch._count?.professionals || 0} pros
           </span>
         </div>
         <span className="text-sm font-medium text-primary-600 flex items-center gap-1 group-hover:gap-2 transition-all">
           Ver sede
-          <ArrowRight className="w-4 h-4" />
+          <IconArrowRight className="w-4 h-4" />
         </span>
       </div>
     </motion.article>

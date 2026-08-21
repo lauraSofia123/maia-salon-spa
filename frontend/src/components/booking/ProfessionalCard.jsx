@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Star, MapPin, Award, ArrowRight } from 'lucide-react';
+import { IconStar, IconMapPin, IconAward, IconArrowRight } from '@tabler/icons-react';
 import Badge from '../ui/Badge';
 import Avatar from '../ui/Avatar';
 
@@ -49,7 +49,7 @@ const ProfessionalCard = ({
             </div>
             {professional.isFeatured && (
               <Badge variant="warning" size="sm">
-                <Award className="w-3 h-3" />
+                <IconAward className="w-3 h-3" />
                 Destacada
               </Badge>
             )}
@@ -58,14 +58,14 @@ const ProfessionalCard = ({
           <div className="flex flex-wrap items-center gap-3 mt-3 text-sm text-neutral-500">
             {professional.rating > 0 && (
               <span className="flex items-center gap-1 text-warning-600 font-medium">
-                <Star className="w-4 h-4 fill-current" />
+                <IconStar className="w-4 h-4 fill-current" />
                 {professional.rating.toFixed(1)}
                 <span className="text-neutral-400">({professional.totalReviews})</span>
               </span>
             )}
             {professional.experienceYears > 0 && (
               <span className="flex items-center gap-1">
-                <Award className="w-4 h-4" />
+                <IconAward className="w-4 h-4" />
                 {professional.experienceYears}+ años
               </span>
             )}
@@ -116,11 +116,11 @@ const ProfessionalCard = ({
       <div className="flex items-center justify-between pt-3 border-t border-neutral-100">
         <span className="text-sm font-medium text-primary-600 flex items-center gap-1 group-hover:gap-2 transition-all">
           Ver perfil
-          <ArrowRight className="w-4 h-4" />
+          <IconArrowRight className="w-4 h-4" />
         </span>
         {professional.rating >= 4.8 && (
           <Badge variant="success" size="sm">
-            <Star className="w-3 h-3 fill-current" />
+            <IconStar className="w-3 h-3 fill-current" />
             Top Rated
           </Badge>
         )}
