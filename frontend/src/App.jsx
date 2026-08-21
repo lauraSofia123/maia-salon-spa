@@ -6,6 +6,9 @@ import Home from './pages/Home';
 
 // NOTA: Las demás páginas se irán agregando en sus respectivas sesiones.
 // Módulo 1 - Sesión 1: Home
+import Professionals from './pages/Professionals';
+import ProfessionalProfile from './pages/ProfessionalProfile';
+import BranchProfile from './pages/BranchProfile';
 
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -27,6 +30,10 @@ function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/profesionales" element={<Professionals />} />
+          <Route path="/sedes" element={<Professionals />} />
+          <Route path="/profesionales/:id" element={<ProfessionalProfile />} />
+          <Route path="/sedes/:id" element={<BranchProfile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

@@ -58,7 +58,7 @@ export const featuredServices = [
     description: 'Mirada amplia y natural con resultado de volumen elegante.',
     duration: '1.5 horas',
     price: 90000,
-    image: '/images/services/pestanas.png'
+    image: '/images/services/pestanas.jpg'
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ export const featuredServices = [
     description: 'Recogidos u ondas con acabado profesional para eventos.',
     duration: '1–2 horas',
     price: 65000,
-    image: '/images/services/peinado.png'
+    image: '/images/services/peinado.jpg'
   },
   {
     id: 6,
@@ -76,7 +76,7 @@ export const featuredServices = [
     description: 'Cabello largo, liso y brillante con resultado premium.',
     duration: '3 horas',
     price: 350000,
-    image: '/images/services/alisado.png'
+    image: '/images/services/alisado.jpg'
   },
   {
     id: 7,
@@ -85,6 +85,6 @@ export const featuredServices = [
     description: 'Un corte profesional que realza tu rostro y personalidad.',
     duration: '1 hora',
     price: 80000,
-    image: '/images/services/corte.png'
+    image: '/images/services/corte.jpg'
   }
 ];
