@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Heart, Star, MapPin, Check, Shield, Truck, Headphones } from 'lucide-react';
+import { IconArrowRight, IconSparkles, IconHeart, IconStar, IconMapPin, IconCheck, IconShield, IconTruck, IconHeadphones } from '@tabler/icons-react';
 import { Section, Container, SectionHeader } from '../components/layout/Section';
 import ProfessionalCard from '../components/booking/ProfessionalCard';
 import BranchCard from '../components/booking/BranchCard';
@@ -42,18 +42,18 @@ const Home = () => {
   }, []);
 
   const features = [
-    { icon: Shield, title: 'Profesionales Certificados', desc: 'Equipo experto con años de experiencia' },
-    { icon: Sparkles, title: 'Productos Premium', desc: 'Marcas profesionales de alta calidad' },
-    { icon: Truck, title: 'Ambiente Relajante', desc: 'Espacios diseñados para tu bienestar' },
-    { icon: Headphones, title: 'Atención Personalizada', desc: 'Cada servicio se adapta a ti' }
+    { icon: IconShield, title: 'Profesionales Certificados', desc: 'Equipo experto con años de experiencia' },
+    { icon: IconSparkles, title: 'Productos Premium', desc: 'Marcas profesionales de alta calidad' },
+    { icon: IconTruck, title: 'Ambiente Relajante', desc: 'Espacios diseñados para tu bienestar' },
+    { icon: IconHeadphones, title: 'Atención Personalizada', desc: 'Cada servicio se adapta a ti' }
   ];
 
   const categories = [
-    { key: 'nails', label: 'Uñas', icon: Sparkles, color: 'primary', count: 15,
+    { key: 'nails', label: 'Uñas', icon: IconSparkles, color: 'primary', count: 15,
       items: ['Acrílicas', 'Semipermanentes', 'Manicure', 'Pedicure', 'Nail Art'] },
-    { key: 'hair', label: 'Cabello', icon: Heart, color: 'secondary', count: 12,
+    { key: 'hair', label: 'Cabello', icon: IconHeart, color: 'secondary', count: 12,
       items: ['Cortes', 'Peinados', 'Tratamientos', 'Color', 'Keratina'] },
-    { key: 'eyelashes', label: 'Pestañas', icon: Star, color: 'accent', count: 8,
+    { key: 'eyelashes', label: 'Pestañas', icon: IconStar, color: 'accent', count: 8,
       items: ['Clásicas', 'Volumen Ruso', 'Híbridas', 'Lifting', 'Retoques'] }
   ];
 
@@ -173,7 +173,7 @@ const Home = () => {
                   </ul>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 group-hover:gap-2 transition-all">
                     Ver todos
-                    <ArrowRight className="w-4 h-4" />
+                    <IconArrowRight className="w-4 h-4" />
                   </span>
                 </motion.div>
                 <motion.div
@@ -193,7 +193,7 @@ const Home = () => {
               <SectionHeader align="left" title="Nuestras Profesionales" subtitle="Expertas apasionadas por su trabajo" />
               <Link to="/profesionales" className="mt-4 sm:mt-0 btn-outline">
                 Ver equipo
-                <ArrowRight className="w-4 h-4" />
+                <IconArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -220,7 +220,7 @@ const Home = () => {
               <SectionHeader align="left" title="Nuestras Sedes" subtitle="Tres ubicaciones en Bogotá para tu comodidad" />
               <Link to="/sedes" className="mt-4 sm:mt-0 btn-outline">
                 Ver todas
-                <ArrowRight className="w-4 h-4" />
+                <IconArrowRight className="w-4 h-4" />
               </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -254,7 +254,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/reservar">
-                <Button size="lg" variant="secondary" rightIcon={<ArrowRight className="w-5 h-5" />} className="w-full sm:w-auto">
+                <Button size="lg" variant="secondary" rightIcon={<IconArrowRight className="w-5 h-5" />} className="w-full sm:w-auto">
                   Reservar Ahora
                 </Button>
               </Link>

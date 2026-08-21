@@ -9,13 +9,13 @@ import { uploadImage, deleteImage } from '../config/cloudinary.js';
 
 const router = express.Router();
 
-router.get('/', validate(schemas.pagination, 'query'), asyncHandler(async (req, res) => {
+router.get('/', validate(schemas.serviceQuery, 'query'), asyncHandler(async (req, res) => {
   const { page = 1, limit = 50, sortBy = 'displayOrder', sortOrder = 'asc', category, isActive, isPopular, search } = req.query;
   
   const where = {};
   if (category) where.category = category;
-  if (isActive !== undefined) where.isActive = isActive === 'true';
-  if (isPopular !== undefined) where.isPopular = isPopular === 'true';
+  if (isActive !== undefined) where.isActive = isActive === true || isActive === 'true';
+  if (isPopular !== undefined) where.isPopular = isPopular === true || isPopular === 'true';
   if (search) {
     where[Op.or] = [
       { name: { [Op.iLike]: `%${search}%` } },

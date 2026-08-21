@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Clock, ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
+import { IconClock, IconArrowRight, IconChevronRight, IconSparkles } from '@tabler/icons-react';
 import { categories, featuredServices } from '../../data/featuredServices';
 import { formatPrice } from '../../utils/formatters';
 
@@ -14,7 +14,7 @@ const ServiceImage = ({ service }) => {
     return (
       <div className="absolute inset-0 bg-gradient-to-br from-primary-100 via-secondary-100 to-accent-100 flex items-center justify-center" aria-hidden="true">
         <div className="text-center">
-          <Sparkles className="w-10 h-10 text-primary-400 mx-auto" />
+          <IconSparkles className="w-10 h-10 text-primary-400 mx-auto" />
           <p className="mt-2 text-xs font-medium text-primary-500">Foto próxima</p>
         </div>
       </div>
@@ -52,7 +52,7 @@ const ServiceCard = ({ service }) => (
       <p className="mt-2 text-sm text-neutral-500 leading-relaxed">{service.description}</p>
 
       <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-primary-600/80">
-        <Clock className="w-4 h-4" aria-hidden="true" />
+        <IconClock className="w-4 h-4" aria-hidden="true" />
         {service.duration}
       </div>
 
@@ -66,7 +66,7 @@ const ServiceCard = ({ service }) => (
       <div className="mt-5 flex items-center justify-between gap-3">
         <span className="text-sm font-medium text-primary-600 flex items-center gap-1 group-hover:gap-2 transition-all">
           Ver detalles
-          <ChevronRight className="w-4 h-4" aria-hidden="true" />
+          <IconChevronRight className="w-4 h-4" aria-hidden="true" />
         </span>
         <Link
           to={`/servicios/${service.id}`}
@@ -164,7 +164,7 @@ const FeaturedServices = () => {
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 hover:gap-3 transition-all w-fit"
             >
               Ver todos los servicios
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <IconArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
         </motion.div>
@@ -242,7 +242,7 @@ const FeaturedServices = () => {
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:text-primary-700 hover:gap-3 transition-all"
             >
               Ver todos los servicios
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              <IconArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
         </div>

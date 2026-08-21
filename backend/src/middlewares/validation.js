@@ -299,6 +299,28 @@ export const schemas = {
     sortBy: Joi.string().optional(),
     sortOrder: Joi.string().valid('asc', 'desc').default('desc')
   }),
+
+  serviceQuery: Joi.object({
+    page: Joi.number().integer().min(1).default(1),
+    limit: Joi.number().integer().min(1).max(100).default(20),
+    sortBy: Joi.string().optional(),
+    sortOrder: Joi.string().valid('asc', 'desc').default('asc'),
+    category: Joi.string().valid('nails', 'hair', 'eyelashes', 'other').optional(),
+    isActive: Joi.boolean().optional(),
+    isPopular: Joi.boolean().optional(),
+    search: Joi.string().max(100).optional()
+  }),
+
+  professionalQuery: Joi.object({
+    page: Joi.number().integer().min(1).default(1),
+    limit: Joi.number().integer().min(1).max(100).default(20),
+    sortBy: Joi.string().optional(),
+    sortOrder: Joi.string().valid('asc', 'desc').default('asc'),
+    isActive: Joi.boolean().optional(),
+    isFeatured: Joi.boolean().optional(),
+    category: Joi.string().optional(),
+    search: Joi.string().max(100).optional()
+  }),
   
   dateRange: Joi.object({
     startDate: Joi.date().optional(),

@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from 'lucide-react';
+import { IconBrandInstagram, IconBrandFacebook, IconBrandTiktok, IconBrandWhatsapp } from '@tabler/icons-react';
 
 const TikTokIcon = ({ className = '' }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -13,10 +13,10 @@ const WhatsAppIcon = ({ size = 18 }) => (
 );
 
 const socialComponents = {
-  instagram: (props) => <Instagram {...props} />,
-  facebook: (props) => <Facebook {...props} />,
-  tiktok: (props) => <TikTokIcon {...props} />,
-  whatsapp: (props) => <WhatsAppIcon {...props} />,
+  instagram: (props) => <IconBrandInstagram {...props} />,
+  facebook: (props) => <IconBrandFacebook {...props} />,
+  tiktok: (props) => <IconBrandTiktok {...props} />,
+  whatsapp: (props) => <IconBrandWhatsapp {...props} />,
 };
 
 const iconSizeClasses = { sm: 'w-3.5 h-3.5', md: 'w-5 h-5' };
